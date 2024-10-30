@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <style>
+        *{
+
+            box-sizing: border-box;
+            padding: 0%;
+            margin: 0%;
+
+        }
+        /* It Helps to Center the form on the page */
+        body, html {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background:linear-gradient(45deg,rgb(165, 147, 147),rgb(22, 10, 10),rgb(37, 37, 36),rgb(143, 156, 143));
+        }
+        h3 {
+            font-family: 'Comic Sans MS', cursive, sans-serif; 
+            font-weight: bold;
+            font-size: 2rem;
+            background: linear-gradient(to right, #df8a0a, #090909,rgb(5, 5, 5)); 
+            -webkit-background-clip: text;
+            color: transparent; 
+            text-decoration: line-through; 
+        }
+        .form-container {
+            min-width: 300px;
+            width: 100%;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            background-color: #f7f2f9;
+        }
+        
+        input:hover{
+            background-color: rgb(247, 230, 230) !important;
+        }
+        /* Styling for error messages */
+        .error {
+            color: rgb(255, 0, 0);
+            font-size: 0.85rem;
+        }
+        #submit{
+            background-color: rgb(103, 155, 226) !important;
+        }
+        #submit:hover{
+            background-color: rgb(37, 112, 218) !important;
+        }
+    </style>
+</head>
+<body>
+<!--This classes are created using Bootstrap-->
+<div class="form-container">
+    <h3 class="text-center mb-4 border-bottom pb-2">𝐑𝐞𝐠𝐢𝐬𝐭𝐫𝐚𝐭𝐢𝐨𝐧 𝐅𝐨𝐫𝐦</h3>
+    <form id="form">
+        <div class="mb-3">
+            <label for="fullName" class="form-label  border-bottom pb">Full Name</label>
+            <input type="text" class="form-control" id="FullName" placeholder="Enter your full name" required>
+            <div id="NameError" class="error"></div>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label border-bottom pb">Email ID</label>
+            <input type="email" class="form-control" id="Email" placeholder="Enter your email"required>
+            <div id="EmailError" class="error"></div>
+        </div>
+        <div class="mb-3">
+            <label for="phone" class="form-label border-bottom pb">Phone Number</label>
+            <input type="text" class="form-control" id="Phone" placeholder="Enter your phone number"maxlength="10"required>
+            <div id="PhoneError" class="error"></div>
+        </div>
+        <div class="mb-3">
+            <label for="gender" class="form-label border-bottom pb">Gender</label>
+            <select class="form-select" id="Gender">
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+            <div id="GenderError" class="error"></div>
+        </div>
+        <div class="mb-3">
+            <label for="dob" class="form-label border-bottom pb">Date of Birth</label>
+            <input type="date" class="form-control" id="DOB">
+            <div id="DOBError" class="error"></div>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label border-bottom pb">Password</label>
+            <div class="input-group">
+            <input type="password" class="form-control" id="Password" placeholder="Enter your password" minlength="8" required>
+            <button type="button" class="btn btn-outline-secondary" onclick="togglePasswordVisibility('Password', this)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.078-.122.17-.195.276a13.134 13.134 0 0 1-1.66 2.043C11.88 11.332 10.12 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.133 13.133 0 0 1 1.173 8z"/><path d="M8 5.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z"/></svg>
+            </button>
+            </div>
+            <div id="PasswordError" class="error"></div>
+        </div>
+        <div class="mb-3">
+            <label for="confirmPassword" class="form-label border-bottom pb">Confirm Password</label>
+            <input type="password" class="form-control" id="ConfirmPassword" placeholder="Confirm your password" minlength="8" required>
+            <div id="ConfirmPasswordError" class="error"></div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn  mt-2 btn-primary" id="submit" style="width: 50%;">Submit</button>
+        </div>
+        
+    </form>
+</div>
+
+<script>
+    // It Helps to Toggle password visibility when clicking the eye icon button
+    function togglePasswordVisibility(inputId, button) {
+        const input = document.getElementById(inputId);
+        const isPasswordVisible = input.type === "password";
+        input.type = isPasswordVisible ? "text" : "password";
+        //It helps to Update button icon based on visibility
+        button.innerHTML = isPasswordVisible ?`<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-slash" viewBox="0 0 16 16"><path d="M13.359 11.238C12.154 12.313 10.573 13 8 13c-2.573 0-4.154-.687-5.359-1.762C1.496 10.159.823 8.928.611 8c.212-.928.885-2.159 2.03-3.238C3.846 3.687 5.427 3 8 3c2.573 0 4.154.687 5.359 1.762C14.504 5.841 15.177 7.072 15.389 8c-.212.928-.885 2.159-2.03 3.238z"/><path d="M8 5a3 3 0 0 0-3 3 3 3 0 1 0 3-3z"/></svg>`: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.078-.122.17-.195.276a13.134 13.134 0 0 1-1.66 2.043C11.88 11.332 10.12 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.133 13.133 0 0 1 1.173 8z"/><path d="M8 5.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z"/></svg>`;
+    }
+    document.getElementById('form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form from submitting
+        clearErrors(); // Clear previous error messages
+        let isValid = validateForm();//It is used to Validate each field
+        if (isValid) {
+            alert("Form submitted successfully!");
+            document.getElementById('form').reset();//It is used to reset the form after submitting 
+        }
+    });
+
+    //It Helps to Clear previous error messages ,if you remove this function the 
+    function clearErrors() {
+        document.getElementById('NameError').textContent = "";
+        document.getElementById('EmailError').textContent = "";
+        document.getElementById('PhoneError').textContent = "";
+        document.getElementById('GenderError').textContent = "";
+        document.getElementById('DOBError').textContent = "";
+        document.getElementById('PasswordError').textContent = "";
+        document.getElementById('ConfirmPasswordError').textContent = "";
+    }
+
+    //It Helps to Validate the entire form
+    function validateForm() {
+        let isValid = true;
+
+        //It Helps to Validate Full Name
+        const fullName = document.getElementById('FullName').value.trim();//Here trim() is used to remove unnecessary leading and trailing spaces from the input value
+        if (fullName.length < 5) {
+            document.getElementById('NameError').textContent = "Name must be at least 5 characters long.";
+            isValid = false;
+        }
+
+       // It Helps to Validate Email ID
+        const email = document.getElementById('Email').value.trim();
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+        if (!emailPattern.test(email)) {
+            document.getElementById('EmailError').textContent = "Email must be in the format 'someone@gmail.com'.";
+            isValid = false;
+            }
+            else {
+                document.getElementById('EmailError').textContent = ""; //It Helps to Clear error if valid
+                }
+        //It Helps to Validate Phone Number
+        const phone = document.getElementById('Phone').value.trim();
+        const phonePattern = /^[0-9]{10}$/;
+        if (!phonePattern.test(phone) || phone === "123456789") {
+            document.getElementById('PhoneError').textContent = "Enter a valid 10-digit phone number.";
+            isValid = false;
+        }
+        // It Helps to Validate Gender
+        const gender = document.getElementById('Gender').value;
+        if (gender === "") {
+            document.getElementById('GenderError').textContent = "Please select your gender.";
+            isValid = false;
+        }
+        // It Helps to Validate Date of Birth
+        const dob = document.getElementById('DOB').value;
+        if (!dob) {
+            document.getElementById('DOBError').textContent = "Please select your date of birth.";
+            isValid = false;
+        }
+        //It Helps to Validate Password
+        const password = document.getElementById('Password').value;
+        if (password.toLowerCase() === "password" || password === fullName || password.length < 8) {
+            document.getElementById('PasswordError').textContent = "Password must be at least 8 characters and cannot be 'password' or your name.";
+            isValid = false;
+        }
+        // It Helps to Validate Confirm Password
+        const confirmPassword = document.getElementById('ConfirmPassword').value;
+        if (confirmPassword !== password) {
+            document.getElementById('ConfirmPasswordError').textContent = "Passwords do not match.";
+            isValid = false;
+        }
+
+        return isValid;
+    }
+</script>
+
+</body>
+</html>
